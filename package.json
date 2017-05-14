@@ -1,0 +1,28 @@
+{
+  "name": "autocrypt-ui-choo",
+  "version": "0.0.1",
+  "descript ion": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "bankai index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "choo": "^5.4.0",
+    "sheetify": "^6.0.2",
+    "tachyons": "^4.7.0"
+  },
+  "devDependencies": {
+    "bankai": "^7.6.1",
+    "choo-test": "^0.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
