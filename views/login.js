@@ -3,7 +3,8 @@ var html = require('choo/html')
 
 module.exports = function (state, emit) {
   // set default user name if not logged in yet
-  var uName = (state.uName !== '') ? state.uName : 'Alice'
+  var user = state.user
+  var uName = (user.uName !== '') ? user.uName : 'Alice'
 
   // get input value
   function onChangeInput (e) {
@@ -12,11 +13,17 @@ module.exports = function (state, emit) {
 
   // emit username
   function setUsername () {
-    emit('setUName', uName)
+    // emit('setUName', uName)
+    if (uName === '') return
+    emit('user:setName', uName)
   }
   function headLine () {
-    if (state.uName === '') return html`<legend class="f4 fw6 ph0 mh0">Please enter your username</legend>`
-    else return html`<legend class="f4 fw6 ph0 mh0">Goodbye ${uName}</legend>`
+    if (user.uName === '') return html`<legend class="f4 fw6 ph0 mh0">Please enter your username</legend>`
+    else {
+      user.uName === 'alice' ? uName = 'bob' : uName = 'alice'
+      emit('render')
+      return html`<legend class="f4 fw6 ph0 mh0">Goodbye</legend>`
+    }
   }
 
   // returned view
@@ -24,7 +31,7 @@ module.exports = function (state, emit) {
   <body>
     <main class="pa4 black-80">
       <div class="measure center">
-        <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+        <fieldset id="logIn" class="ba b--transparent ph0 mh0">
           ${headLine()}
           <div class="mt3">
             <label class="db fw6 lh-copy f6" for="userName">Username</label>
@@ -36,7 +43,7 @@ module.exports = function (state, emit) {
               value =${uName}/>
           </div>
         </fieldset>
-        <div class="">
+        <div>
           <input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
             type="submit"
             value="Log in"

@@ -16,7 +16,7 @@ module.exports = function (view) {
             <div class=" bg-white pv4"></div>
           </div>
           <div class="fl w-100 w-third-ns pa2">
-            <div class="outline bg-white pv4">
+            <div class="bg-white pv4">
               ${view(state, emitter)}
             </div>
           </div>
